@@ -34,8 +34,8 @@ export const HoverToUnderlineLeft: React.FC<TProps> = ({ ButtonName }) => {
     if (hover) {
       setVisibility("visible");
     } else {
-      const timeout = setTimeout(() => setVisibility("hidden"), 300);
-      return () => clearTimeout(timeout);
+      const endHover = setTimeout(() => setVisibility("hidden"), 300);
+      return () => clearTimeout(endHover);
     }
   }, [hover]);
 
