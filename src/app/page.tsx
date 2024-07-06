@@ -15,6 +15,7 @@ function Home() {
         <HoverToUnderlineDown ButtonName={"Button"} />
         <HoverToUnderlineUp ButtonName={"Button"} />
         <HoverToUnderlineLeft ButtonName={"Button"} />
+        <HoverToUnderlineLeft ButtonName={"Button"} />
       </Box>
     </>
   );
