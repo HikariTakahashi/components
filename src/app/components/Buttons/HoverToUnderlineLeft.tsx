@@ -1,14 +1,14 @@
 "use client";
 
 import { Box, Link } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { keyframes } from "@emotion/react";
 
 type TProps = {
   ButtonName: string;
 };
 
-const Extension = keyframes`
+const fadeIn = keyframes`
   from {
     width: 0;
   }
@@ -17,8 +17,27 @@ const Extension = keyframes`
   }
 `;
 
+const fadeOut = keyframes`
+  from {
+    width: 82px;
+  }
+  to {
+    width: 0;
+  }
+`;
+
 export const HoverToUnderlineLeft: React.FC<TProps> = ({ ButtonName }) => {
   const [hover, setHover] = useState(false);
+  const [visibility, setVisibility] = useState("hidden");
+
+  useEffect(() => {
+    if (hover) {
+      setVisibility("visible");
+    } else {
+      const timeout = setTimeout(() => setVisibility("hidden"), 300);
+      return () => clearTimeout(timeout);
+    }
+  }, [hover]);
 
   return (
     <Box
@@ -40,8 +59,8 @@ export const HoverToUnderlineLeft: React.FC<TProps> = ({ ButtonName }) => {
         height={2}
         bgcolor="black"
         sx={{
-          visibility: hover ? "visible" : "hidden",
-          animation: hover ? `${Extension} 0.3s ease-in-out` : "none",
+          visibility: visibility,
+          animation: `${hover ? fadeIn : fadeOut} 0.3s ease-in-out`,
         }}
       />
     </Box>
