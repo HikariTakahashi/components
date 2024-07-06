@@ -1,14 +1,14 @@
 "use client";
 
 import { Box, Link } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { keyframes } from "@emotion/react";
 
 type TProps = {
   ButtonName: string;
 };
 
-const fadeIn = keyframes`
+const FadeIn = keyframes`
   from {
     opacity: 0;
     transform: translateY(8px);
@@ -19,8 +19,29 @@ const fadeIn = keyframes`
   }
 `;
 
+const FadeOut = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(8px);
+  }
+`;
+
 export const HoverToUnderlineUp: React.FC<TProps> = ({ ButtonName }) => {
   const [hover, setHover] = useState(false);
+  const [visibility, setVisibility] = useState("hidden");
+
+  useEffect(() => {
+    if (hover) {
+      setVisibility("visible");
+    } else {
+      const timeout = setTimeout(() => setVisibility("hidden"), 300);
+      return () => clearTimeout(timeout);
+    }
+  }, [hover]);
 
   return (
     <Box
@@ -42,8 +63,8 @@ export const HoverToUnderlineUp: React.FC<TProps> = ({ ButtonName }) => {
         height={2}
         bgcolor="black"
         sx={{
-          visibility: hover ? "visible" : "hidden",
-          animation: hover ? `${fadeIn} 0.3s ease-in-out` : "none",
+          visibility: visibility,
+          animation: `${hover ? FadeIn : FadeOut} 0.3s ease-in-out`,
         }}
       />
     </Box>
@@ -51,3 +72,6 @@ export const HoverToUnderlineUp: React.FC<TProps> = ({ ButtonName }) => {
 };
 
 export default HoverToUnderlineUp;
+function setVisibility(arg0: string) {
+  throw new Error("Function not implemented.");
+}
