@@ -5,6 +5,7 @@ import HoverToUnderlineDown from "./components/Buttons/HoverToUnderlineDown";
 import HoverToUnderlineUp from "./components/Buttons/HoverToUnderlineUp";
 import HoverToUnderlineLeft from "./components/Buttons/HoverToUnderlineLeft";
 import HoverToUnderlineRight from "./components/Buttons/HoverToUnderlineRight";
+import HoverToUnderlinePass from "./components/Buttons/HoverToUnderlinePass";
 
 function Home() {
   return (
@@ -17,6 +18,7 @@ function Home() {
         <HoverToUnderlineUp ButtonName={"Button"} />
         <HoverToUnderlineLeft ButtonName={"Button"} />
         <HoverToUnderlineRight ButtonName={"Button"} />
+        <HoverToUnderlinePass ButtonName={"Button"} />
       </Box>
     </>
   );
