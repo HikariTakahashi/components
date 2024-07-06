@@ -26,7 +26,9 @@ const fadeOut = keyframes`
   }
 `;
 
-export const HoverToUnderlinePass: React.FC<TProps> = ({ ButtonName }) => {
+export const HoverToUnderlinePassToRight: React.FC<TProps> = ({
+  ButtonName,
+}) => {
   const [hover, setHover] = useState(false);
   const [visibility, setVisibility] = useState("hidden");
 
@@ -68,4 +70,4 @@ export const HoverToUnderlinePass: React.FC<TProps> = ({ ButtonName }) => {
   );
 };
 
-export default HoverToUnderlinePass;
+export default HoverToUnderlinePassToRight;
